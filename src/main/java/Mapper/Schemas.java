@@ -43,12 +43,12 @@ public class Schemas<T,E> {
         return rows1;
     }
 
-    public List<Row> setRowModel2(List<SamplePojo> list) {
+    public<P> List<Row>setRowModel2  (List<P> list) {
         rows2 = new ArrayList<Row>();
         list.stream()
                 .map(c -> {
                     try {
-                        rows2.add(new PojoToRowMapper().call(c));
+                        rows2.add(new PojoToRowMapper().call((SamplePojo) c));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
