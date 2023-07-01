@@ -13,6 +13,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Schemas<T,E> {
+    private StructType structType;
+    private List<Row> rows1, rows2;
+    private SparkSession spark = SparkSession.builder().appName("Build A dataframe").master("local[*]").getOrCreate();
+
+    private String field1, field2;
+    private T val1;
+    private E val2;
+
+    private List<SamplePojo> list = new ArrayList<>();
     public StructType getStructType() {
         return structType;
     }
@@ -39,7 +48,7 @@ public class Schemas<T,E> {
         list.stream()
                 .map(c -> {
                     try {
-                        rows2.add(new SamplePojoToRowMapper().call(c));
+                        rows2.add(new PojoToRowMapper().call(c));
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -91,14 +100,6 @@ public class Schemas<T,E> {
         }
     }
 
-    private StructType structType;
-    private List<Row> rows1, rows2;
-    private SparkSession spark = SparkSession.builder().appName("Build A dataframe").master("local[*]").getOrCreate();
 
-    private String field1, field2;
-    private T val1;
-    private E val2;
-
-    private List<SamplePojo> list = new ArrayList<>();
 
 }
