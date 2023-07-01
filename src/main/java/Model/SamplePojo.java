@@ -1,6 +1,6 @@
 package Model;
 
-public class SamplePojo {
+public class SamplePojo implements TypeAggregator {
     private Integer id;
     private String name;
 
