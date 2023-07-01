@@ -12,7 +12,7 @@ public class Main {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         StringBuilder salt = new StringBuilder();
         Random randomStr = new Random();
-        while (salt.length() < 18) { // length of the random string.
+        while (salt.length() < 10){
             int index = (int) (randomStr.nextFloat() * SALTCHARS.length());
             salt.append(SALTCHARS.charAt(index));
         }

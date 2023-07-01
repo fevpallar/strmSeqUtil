@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Schemas {
+public class Schemas<T,E> {
     public StructType getStructType() {
         return structType;
     }
@@ -26,7 +26,7 @@ public class Schemas {
         structType = structType.add(field2, DataTypes.StringType, false);
     }
 
-    public List<Row> setRowModel1(String val1, String val2) {
+    public List<Row> setRowModel1(T val1, E val2) {
         this.val1 = val1;
         this.val2 = val2;
         rows1 = new ArrayList<Row>();
@@ -95,7 +95,9 @@ public class Schemas {
     private List<Row> rows1, rows2;
     private SparkSession spark = SparkSession.builder().appName("Build A dataframe").master("local[*]").getOrCreate();
 
-    private String field1, field2, val1, val2;
+    private String field1, field2;
+    private T val1;
+    private E val2;
 
     private List<SamplePojo> list = new ArrayList<>();
 

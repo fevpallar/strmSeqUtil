@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="streamSeqUtil" />
         <module name="strmSeqUtil" />
+        <module name="temps" />
       </profile>
     </annotationProcessing>
   </component>
